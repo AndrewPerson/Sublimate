@@ -28,11 +28,19 @@ passport.serializeUser(function (user, done) { done(null, user) });
 passport.deserializeUser(function (user, done) { done(null, user) });
 
 
-app.use(express.static(__dirname + '/public', { maxAge: 2592000000 /*One Month*/ }));
+app.use(express.static(__dirname + '/public', { maxAge: 5184000 /*One Day*/ }));
 
 app.set('view engine', 'ejs');
 app.use(require('cookie-parser')());
-app.use(require('express-session')({ secret: secret, key: id, cookie: { maxAge: 7776000000 /* 90 Days */ } }));
+app.use(require('express-session')({
+    secret: secret,
+    key: id,
+    cookie: {
+        maxAge: 7776000000 /* 90 Days */
+    },
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -52,8 +60,6 @@ var SBHS = new SBHSStrategy(
 );
 
 passport.use(SBHS);
-
-var termsCache = {}; // Of course we plan to leave this running forever ;)
 
 function getTokens(tokens, done) {
     if (Date.now() <= tokens.expires) {
@@ -131,12 +137,10 @@ app.get('/api/timetable.json', function (req, res) {
 
 app.get('/api/calendar/terms.json', function (req, res) {
     var year = new Date().getFullYear();
-    if (year in termsCache) res.jsonp(termsCache[year]);
-    else request("https://student.sbhs.net.au/api/calendar/terms.json", function (err, response, body) {
+    request("https://student.sbhs.net.au/api/calendar/terms.json", function (err, response, body) {
         if (!err && response.statusCode == 200) {
             body = JSON.parse(body);
             res.jsonp(body);
-            termsCache[year] = body;
         };
     });
 });

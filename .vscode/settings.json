@@ -5,6 +5,7 @@
         "htmlcompressor",
         "Intertag",
         "OPENSHIFT",
+        "resave",
         "SBHS",
         "VCAP"
     ]
