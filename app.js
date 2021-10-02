@@ -24,11 +24,10 @@ var express = require('express'),
     uuid = require('node-uuid'),
     request = require('request');
 
+app.use(express.static(__dirname + '/public', { maxAge: 5184000 /*One Day*/ }));
+
 passport.serializeUser(function (user, done) { done(null, user) });
 passport.deserializeUser(function (user, done) { done(null, user) });
-
-
-app.use(express.static(__dirname + '/public', { maxAge: 5184000 /*One Day*/ }));
 
 app.set('view engine', 'ejs');
 app.use(require('cookie-parser')());
