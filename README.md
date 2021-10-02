@@ -19,17 +19,28 @@ MIT. I know you know what that means.
 
 ## How to Use
 
-Register your app at the School Portal first. Then create a file named **config.js** in the root directory, with the following stuff in it:
+Register your app at the School Portal first. Make sure to register the redirect as /callback.
+
+### Developing
+
+Create a file named **config.js** in the root directory, with the following stuff in it:
 
 ```js
 module.exports = {
-  id     : "APP ID",
-  secret : "APP SECRET",
-  host   : "APP HOST"
+    id: "<insert APP ID>",
+    secret: "<insert APP SECRET>",
+    host: "<insert APP HOST>"
 }
 ```
 
-Oh, and make sure your redirect is registered as `/callback`.
+### Production
+
+For a production scenario, instead of using config.js, set the following environment variables:
+
+1. PRODUCTION=TRUE
+2. ID=\<insert APP ID\>
+3. SECRET=\<insert APP SECRET\>
+4. HOST=\<insert APP HOST\>
 
 ## Credits
 
