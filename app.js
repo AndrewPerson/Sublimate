@@ -15,8 +15,7 @@ var id = config.id,
     secret = config.secret,
     callback = 'http://' + config.host + '/callback';
 
-var port = process.env.PORT || 8080,
-    ip = process.env.OPENSHIFT_NODEJS_IP;
+var port = process.env.PORT || 8080;
 
 var express = require('express'),
     app = express(),
@@ -185,4 +184,4 @@ app.get('/*', function (req, res) {
     res.status(404).render('404', { name: req.user ? req.user.givenName : null })
 });
 
-app.listen(port, ip);
+app.listen(port);
