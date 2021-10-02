@@ -1,9 +1,21 @@
-var config = require('./config'),
-    id = config.id,
+var config;
+
+if (process.env.PRODUCTION) {
+    config = {
+        id: process.env.ID,
+        secret: process.env.SECRET,
+        host: process.env.HOST
+    };
+}
+else {
+    config = require("./config");
+}
+
+var id = config.id,
     secret = config.secret,
     callback = 'http://' + config.host + '/callback';
 
-var port = parseInt(process.env.OPENSHIFT_NODEJS_PORT || process.env.VCAP_APP_PORT || '8080'),
+var port = process.env.PORT || 8080,
     ip = process.env.OPENSHIFT_NODEJS_IP;
 
 var express = require('express'),
