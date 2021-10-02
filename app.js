@@ -13,7 +13,7 @@ else {
 
 var id = config.id,
     secret = config.secret,
-    callback = 'http://' + config.host + '/callback';
+    callback = (process.env.PRODUCTION ? 'https://' : "http://") + config.host + '/callback';
 
 var port = process.env.PORT || 8080;
 
