@@ -1,0 +1,41 @@
+<div class='overlaymenu' id='contextmenu' style='display: none'>
+    <div onmousedown='$(this).parent().fadeOut()'></div>
+    <ul onclick='$(this).parent().fadeOut()'>
+        <li onclick='customise.requestImage()'>Change Background</li>
+        <li onclick='arguments[0].stopPropagation()'>
+            Notices:
+            <select id='noticesFilterSelect' onchange='localStorage.noticeFilter=this.value;customise.filterNotices(this.value);$("#contextmenu").fadeOut()'>
+                <option value=''>All Notices</option>
+                <option value='7'>Year 7</option>
+                <option value='8'>Year 8</option>
+                <option value='9'>Year 9</option>
+                <option value='10'>Year 10</option>
+                <option value='11'>Year 11</option>
+                <option value='12'>Year 12</option>
+            </select>
+        </li>
+        <li onclick='localStorage.classicMode="1"==localStorage.classicMode?"0":"1";$("html").toggleClass("classic");customise.displayImage();'>Toggle Theme</li>
+        <li style='border-top:solid 1px #ddd'></li>
+        <li onclick='localStorage.clear();location.reload()'>Clear All Data</li>
+    </ul>
+</div>
+<script>
+    $(function () {
+        $("<div class='overlaymenu' id='contextmenu' style='display: none'>")
+
+        $(document).on("contextmenu", function (e) {
+            e.preventDefault();
+            if (!$(e.originalEvent.target).parents("#contextmenu ul").length > 0) $("#contextmenu").fadeIn();
+        });
+
+        var pressTimer;
+        $(document).on("touchend touchmove", function () {
+            clearTimeout(pressTimer);
+        }).on('touchstart', function (e) {
+            (!$(e.originalEvent.target).parents("#contextmenu ul").length > 0) && $("#contextmenu").fadeOut();
+            if (e.originalEvent.touches.length == 1) pressTimer = window.setTimeout(function () {
+                $("#contextmenu").fadeIn();
+            }, 500);
+        });
+    })
+</script>

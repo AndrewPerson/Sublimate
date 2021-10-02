@@ -1,0 +1,38 @@
+{
+  "name": "sublimate",
+  "version": "0.0.1",
+  "description": "Manifestation of my boredom.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cryptiles": "^4.1.3",
+    "ejs": "~1.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "node-uuid": "~1.4.1",
+    "passport": "~0.2.0",
+    "passport-sbhs": "~0.0.3",
+    "request": "~2.36.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.4.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.6.0",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-uglify": "^5.0.1",
+    "grunt-git-deploy": "^0.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/master-baiter/solid.git"
+  },
+  "author": "Ram Kaniyur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/master-baiter/solid/issues"
+  },
+  "homepage": "https://github.com/master-baiter/solid"
+}
