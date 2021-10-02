@@ -1,4 +1,6 @@
-# sublimate
+# Sublimate
+
+This is a slightly altered version of [quadruple-slap-old/sublimate](https://github.com/quadrupleslap-old/sublimate);
 
 ---
 **Warning:** It's a little rough around the edges right now.
