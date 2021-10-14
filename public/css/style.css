@@ -327,3 +327,12 @@ p {
     overflow-y: scroll;
   }
 }
+
+/* Styles to achieve feature parity with jQuery */
+.fade-in {
+    
+}
+
+.fade-out {
+    display: none;
+}

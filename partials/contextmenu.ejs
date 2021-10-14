@@ -1,10 +1,10 @@
 <div class='overlaymenu' id='contextmenu' style='display: none'>
-    <div onmousedown='$(this).parent().fadeOut()'></div>
-    <ul onclick='$(this).parent().fadeOut()'>
+    <div onmousedown='fadeOut($(this).parent())'></div>
+    <ul onclick='fadeOut($(this).parent())'>
         <li onclick='customise.requestImage()'>Change Background</li>
         <li onclick='arguments[0].stopPropagation()'>
             Notices:
-            <select id='noticesFilterSelect' onchange='localStorage.noticeFilter=this.value;customise.filterNotices(this.value);$("#contextmenu").fadeOut()'>
+            <select id='noticesFilterSelect' onchange='localStorage.noticeFilter=this.value;customise.filterNotices(this.value);fadeOut($("#contextmenu"))'>
                 <option value=''>All Notices</option>
                 <option value='7'>Year 7</option>
                 <option value='8'>Year 8</option>
@@ -25,16 +25,16 @@
 <script>
     document.addEventListener("contextmenu", e => {
         e.preventDefault();
-        if (!$(e.target).parents("#contextmenu ul").length > 0) $("#contextmenu").fadeIn();
+        if (!$(e.target).parents("#contextmenu ul").length > 0) fadeIn($("#contextmenu"));
     });
 
     var pressTimer;
 
     document.addEventListener("pointermove", () => clearTimeout(pressTimer));
     document.addEventListener("pointerdown", e=> {
-        (!$(e.target).parents("#contextmenu ul").length > 0) && $("#contextmenu").fadeOut();
+        (!$(e.target).parents("#contextmenu ul").length > 0) && fadeOut($("#contextmenu"));
         if (e.touches.length == 1) pressTimer = window.setTimeout(function () {
-            $("#contextmenu").fadeIn();
+            fadeIn($("#contextmenu"));
         }, 500);
     });
 </script>

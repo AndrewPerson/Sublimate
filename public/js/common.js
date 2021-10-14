@@ -71,3 +71,13 @@ function fitImageInBox(url, width, height, callback) {
 window.addEventListener("resize", () => {
     $("*").css("z-index", 1).css("z-index", "");
 });
+
+function fadeIn(element) {
+    if (element.hasClass("fade-out")) element.removeClass("fade-out");
+    element.addClass("fade-in");
+}
+
+function fadeOut(element) {
+    if (element.hasClass("fade-in")) element.removeClass("fade-in");
+    element.addClass("fade-out");
+}
