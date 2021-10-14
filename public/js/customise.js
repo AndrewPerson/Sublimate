@@ -8,9 +8,9 @@ window.customise = {
 
         var imageURL = localStorage.getItem('background-image') || ""
 
-        this.imageSheet.html('html,.simpleMode {background: linear-gradient(' + overlayColor + ',' + overlayColor + '), ' + defaultColor + ' url(' + imageURL + ');' +
+        this.imageSheet.innerHTML = 'html,.simpleMode {background: linear-gradient(' + overlayColor + ',' + overlayColor + '), ' + defaultColor + ' url(' + imageURL + ');' +
             'background-size: cover; background-attachment: fixed; background-position: center}'
-        );
+        ;
     },
     requestImage: function () {
         var that = this
