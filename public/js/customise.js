@@ -1,5 +1,5 @@
 window.customise = {
-    imageSheet: $("body").appendChild(document.createElement("style")),
+    imageSheet: $("body").append(document.createElement("style")),
     displayImage: function () {
         var overlayColor, defaultColor;
 
