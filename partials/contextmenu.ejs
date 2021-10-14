@@ -23,15 +23,15 @@
 <script>
     $("<div class='overlaymenu' id='contextmenu' style='display: none'>")
 
-    $(document).on("contextmenu", function (e) {
+    document.addEventListener("contextmenu", e => {
         e.preventDefault();
         if (!$(e.originalEvent.target).parents("#contextmenu ul").length > 0) $("#contextmenu").fadeIn();
     });
 
     var pressTimer;
-    $(document).on("touchend touchmove", function () {
-        clearTimeout(pressTimer);
-    }).on('touchstart', function (e) {
+
+    document.addEventListener("pointermove", () => clearTimeout(pressTimer));
+    document.addEventListener("pointerdown", e=> {
         (!$(e.originalEvent.target).parents("#contextmenu ul").length > 0) && $("#contextmenu").fadeOut();
         if (e.originalEvent.touches.length == 1) pressTimer = window.setTimeout(function () {
             $("#contextmenu").fadeIn();
