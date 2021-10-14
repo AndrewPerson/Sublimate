@@ -37,8 +37,6 @@ window.customise = {
     }
 }
 
-$(function () {
-    if (localStorage.noticeFilter) $("#noticesFilterSelect").val(localStorage.noticeFilter)
-    if (localStorage.classicMode == '1') $("html").addClass('classic')
-    customise.displayImage()
-})
+if (localStorage.noticeFilter) $("#noticesFilterSelect").val(localStorage.noticeFilter)
+if (localStorage.classicMode == '1') $("html").addClass('classic')
+customise.displayImage();

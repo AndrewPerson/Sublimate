@@ -1,6 +1,4 @@
-	$(function() {
-		getDay()
-	})
+    getDay()
 
 	function getDay(date) {
 		var now = date || new Date()

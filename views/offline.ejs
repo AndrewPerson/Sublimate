@@ -32,80 +32,74 @@
     </div>
 
     <script type='text/javascript'>
+        window.allBells = [[
+            { 'name': 'School Starts', 'time': '09:00' },
+            { 'name': '1', 'time': '09:05' },
+            { 'name': 'Transition', 'time': '10:05' },
+            { 'name': '2', 'time': '10:10' },
+            { 'name': 'Lunch 1', 'time': '11:10' },
+            { 'name': 'Lunch 2', 'time': '11:30' },
+            { 'name': '3', 'time': '11:50' },
+            { 'name': 'Transition', 'time': '12:50' },
+            { 'name': '4', 'time': '12:55' },
+            { 'name': 'Recess', 'time': '13:55' },
+            { 'name': '5', 'time': '14:15' },
+            { 'name': 'End of Day', 'time': '15:15' }
+        ], [
+            { 'name': 'School Starts', 'time': '09:00' },
+            { 'name': '1', 'time': '09:05' },
+            { 'name': 'Transition', 'time': '10:05' },
+            { 'name': '2', 'time': '10:10' },
+            { 'name': 'Recess', 'time': '11:10' },
+            { 'name': '3', 'time': '11:30' },
+            { 'name': 'Lunch 1', 'time': '12:30' },
+            { 'name': 'Lunch 2', 'time': '12:50' },
+            { 'name': '4', 'time': '13:10' },
+            { 'name': 'Transition', 'time': '14:10' },
+            { 'name': '5', 'time': '14:15' },
+            { 'name': 'End of Day', 'time': '15:15' }
+        ], [
+            { 'name': 'School Starts', 'time': '09:25' },
+            { 'name': '1', 'time': '09:30' },
+            { 'name': 'Transition', 'time': '10:25' },
+            { 'name': '2', 'time': '10:30' },
+            { 'name': 'Lunch 1', 'time': '11:25' },
+            { 'name': 'Lunch 2', 'time': '11:45' },
+            { 'name': '3', 'time': '12:05' },
+            { 'name': 'Transition', 'time': '13:00' },
+            { 'name': '4', 'time': '13:05' },
+            { 'name': 'Recess', 'time': '14:00' },
+            { 'name': '5', 'time': '14:20' },
+            { 'name': 'End of Day', 'time': '15:15' }
+        ]]
 
-        $(function () {
-            window.allBells = [[
-                { 'name': 'School Starts', 'time': '09:00' },
-                { 'name': '1', 'time': '09:05' },
-                { 'name': 'Transition', 'time': '10:05' },
-                { 'name': '2', 'time': '10:10' },
-                { 'name': 'Lunch 1', 'time': '11:10' },
-                { 'name': 'Lunch 2', 'time': '11:30' },
-                { 'name': '3', 'time': '11:50' },
-                { 'name': 'Transition', 'time': '12:50' },
-                { 'name': '4', 'time': '12:55' },
-                { 'name': 'Recess', 'time': '13:55' },
-                { 'name': '5', 'time': '14:15' },
-                { 'name': 'End of Day', 'time': '15:15' }
-            ], [
-                { 'name': 'School Starts', 'time': '09:00' },
-                { 'name': '1', 'time': '09:05' },
-                { 'name': 'Transition', 'time': '10:05' },
-                { 'name': '2', 'time': '10:10' },
-                { 'name': 'Recess', 'time': '11:10' },
-                { 'name': '3', 'time': '11:30' },
-                { 'name': 'Lunch 1', 'time': '12:30' },
-                { 'name': 'Lunch 2', 'time': '12:50' },
-                { 'name': '4', 'time': '13:10' },
-                { 'name': 'Transition', 'time': '14:10' },
-                { 'name': '5', 'time': '14:15' },
-                { 'name': 'End of Day', 'time': '15:15' }
-            ], [
-                { 'name': 'School Starts', 'time': '09:25' },
-                { 'name': '1', 'time': '09:30' },
-                { 'name': 'Transition', 'time': '10:25' },
-                { 'name': '2', 'time': '10:30' },
-                { 'name': 'Lunch 1', 'time': '11:25' },
-                { 'name': 'Lunch 2', 'time': '11:45' },
-                { 'name': '3', 'time': '12:05' },
-                { 'name': 'Transition', 'time': '13:00' },
-                { 'name': '4', 'time': '13:05' },
-                { 'name': 'Recess', 'time': '14:00' },
-                { 'name': '5', 'time': '14:20' },
-                { 'name': 'End of Day', 'time': '15:15' }
-            ]]
+        window.schoolWeeks = []
 
-            window.schoolWeeks = []
+        Date.prototype.getWeek = function () {
+            var onejan = new Date(this.getFullYear(), 0, 1)
+            onejan.setDate(onejan.getDate() - (onejan.getDay() + 6) % 7)
+            var today = new Date(this.getFullYear(), this.getMonth(), this.getDate())
+            var dayOfYear = ((today - onejan + 86400000) / 86400000)
+            return Math.ceil(dayOfYear / 7)
+        }
 
-            Date.prototype.getWeek = function () {
-                var onejan = new Date(this.getFullYear(), 0, 1)
-                onejan.setDate(onejan.getDate() - (onejan.getDay() + 6) % 7)
-                var today = new Date(this.getFullYear(), this.getMonth(), this.getDate())
-                var dayOfYear = ((today - onejan + 86400000) / 86400000)
-                return Math.ceil(dayOfYear / 7)
+        $.getJSON('/api/calendar/terms.json', function (data) {
+            window.holidays = Object.keys($.extend({}, data.publicHolidays, data.developmentDays))
+
+            for (term in data.terms) {
+                var i = new Date(data.terms[term].start.date).getWeek(),
+                    end = new Date(data.terms[term].end.date).getWeek()
+                for (; i <= end; i++) {
+                    schoolWeeks.push(i)
+                }
             }
 
-            $.getJSON('/api/calendar/terms.json', function (data) {
-                window.holidays = Object.keys($.extend({}, data.publicHolidays, data.developmentDays))
+            window.weekTypeOffset = $.inArray(data.terms["1"].start.weekType, ['A', 'B', 'C'])
 
-                for (term in data.terms) {
-                    var i = new Date(data.terms[term].start.date).getWeek(),
-                        end = new Date(data.terms[term].end.date).getWeek()
-                    for (; i <= end; i++) {
-                        schoolWeeks.push(i)
-                    }
-                }
-
-                window.weekTypeOffset = $.inArray(data.terms["1"].start.weekType, ['A', 'B', 'C'])
-
-                $.getJSON('/api/timetable.json', function (data) {
-                    window.timetable = data
-                    getDayInfo()
-                })
+            $.getJSON('/api/timetable.json', function (data) {
+                window.timetable = data
+                getDayInfo()
             })
-
-
-
         })
 
         function getDayInfo(date) {
