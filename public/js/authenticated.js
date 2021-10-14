@@ -62,13 +62,10 @@
 				constructed += '</tr>'
 			}
 
-			$('#belltimes table').append(constructed)
+			$('#belltimes table').innerHTML = constructed;
 			showNextPeriod()
 
-		}).fail(function () {
-			window.location.href = "/fallback"
-		})
-
+		});
 }
 
 
