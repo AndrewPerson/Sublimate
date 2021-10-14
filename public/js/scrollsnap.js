@@ -6,14 +6,14 @@
 
   function touchStart(event) { if (window.innerHeight > window.innerWidth) {
     if (dragStart !== null) { return; }
-    if (event.originalEvent.touches) event = event.originalEvent.touches[0];
+    if (event.touches) event = event.touches[0];
     dragStart = event.clientX;
   }}
 
   function touchMove (event) { if (window.innerHeight > window.innerWidth) {
 
     if (dragStart === null) { return; }
-    if (event.originalEvent.touches) event = event.originalEvent.touches[0];
+    if (event.touches) event = event.touches[0];
 
     var delta = dragStart - event.clientX;
     percentage = delta / $(selector).width();

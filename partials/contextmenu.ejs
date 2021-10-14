@@ -25,15 +25,15 @@
 <script>
     document.addEventListener("contextmenu", e => {
         e.preventDefault();
-        if (!$(e.originalEvent.target).parents("#contextmenu ul").length > 0) $("#contextmenu").fadeIn();
+        if (!$(e.target).parents("#contextmenu ul").length > 0) $("#contextmenu").fadeIn();
     });
 
     var pressTimer;
 
     document.addEventListener("pointermove", () => clearTimeout(pressTimer));
     document.addEventListener("pointerdown", e=> {
-        (!$(e.originalEvent.target).parents("#contextmenu ul").length > 0) && $("#contextmenu").fadeOut();
-        if (e.originalEvent.touches.length == 1) pressTimer = window.setTimeout(function () {
+        (!$(e.target).parents("#contextmenu ul").length > 0) && $("#contextmenu").fadeOut();
+        if (e.touches.length == 1) pressTimer = window.setTimeout(function () {
             $("#contextmenu").fadeIn();
         }, 500);
     });
