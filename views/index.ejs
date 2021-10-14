@@ -16,6 +16,12 @@
     <link rel="icon" type="image/png" href="/img/favicon.png">
 
     <link rel='stylesheet' href='css/style.css'>
+
+    <script src="js/cash.js"></script>
+
+    <script src="js/common.js"></script>
+    <script src="js/customise.js"></script>
+    <script src="js/authenticated.js"></script>
 </head>
 
 <body>
@@ -41,27 +47,6 @@
 
         </div>
     </div>
-
-    <script>
-        window.q = [], window.$ = function (f) { q.push(f) };
-        window.addEventListener("load", function () {
-
-            var element = document.createElement("script");
-            document.body.appendChild(element);
-
-            element.addEventListener("load", function () {
-                var scripts = ["/js/common.js", "/js/customise.js", "/js/authenticated.js", "/js/scrollsnap.js"];
-                $.each(scripts, function (i, o) {
-                    var e = document.createElement("script");
-                    document.head.appendChild(e);
-                    e.src = o;
-                });
-                $.each(q, function (index, f) { $(f) }); delete q;
-            })
-
-            element.src = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";
-        });
-    </script>
 
     <%- include ../partials/contextmenu.ejs %>
 </body>
