@@ -37,7 +37,7 @@ window.customise = {
     }
 }
 
-document.appendChild(customise.imageSheet);
+document.querySelector("body").appendChild(customise.imageSheet);
 
 if (localStorage.noticeFilter) $("#noticesFilterSelect").val(localStorage.noticeFilter)
 if (localStorage.classicMode == '1') $("html").addClass('classic')
