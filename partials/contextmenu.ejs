@@ -20,9 +20,9 @@
     </ul>
 </div>
 
-<script>
-    $("<div class='overlaymenu' id='contextmenu' style='display: none'>")
+<div class='overlaymenu' id='contextmenu' style='display: none'></div>
 
+<script>
     document.addEventListener("contextmenu", e => {
         e.preventDefault();
         if (!$(e.originalEvent.target).parents("#contextmenu ul").length > 0) $("#contextmenu").fadeIn();
