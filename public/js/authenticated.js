@@ -62,9 +62,7 @@
 				constructed += '</tr>'
 			}
 
-            console.log(constructed);
-
-			document.querySelector('#belltimes table').innerHTML = constructed;
+            $('#belltimes table').html(constructed);
 			showNextPeriod();
 		});
 }
