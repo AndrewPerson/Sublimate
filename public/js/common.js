@@ -73,7 +73,7 @@ window.addEventListener("resize", () => {
 });
 
 function fadeIn(element) {
-    element.css("display", "");
+    element.removeAttr("style");
 
     if (element.hasClass("fade-out")) element.removeClass("fade-out");
     element.addClass("fade-in");
