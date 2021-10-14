@@ -33,8 +33,5 @@
     document.addEventListener("pointermove", () => clearTimeout(pressTimer));
     document.addEventListener("pointerdown", e=> {
         (!$(e.target).parents("#contextmenu ul").length > 0) && fadeOut($("#contextmenu"));
-        if (e.touches.length == 1) pressTimer = window.setTimeout(function () {
-            fadeIn($("#contextmenu"));
-        }, 500);
     });
 </script>
