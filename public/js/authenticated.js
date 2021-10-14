@@ -5,8 +5,7 @@
     getNotices()
 
 	function getDay() {
-		$.getJSON( '/api/daytimetable.json', function( data ) {
-
+		$.getJSON('/api/daytimetable.json', function( data ) {
 			window.day = data
 			day.bells[0].bellDisplay = 'School Starts'
 

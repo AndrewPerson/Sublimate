@@ -4,7 +4,7 @@
 		var now = date || new Date()
 		var isodate = now.toISOString().split('T')[0]
 
-		$.getJSON( '//student.sbhs.net.au/api/timetable/bells.json?date='+ isodate +'&callback=?', function( data ) {
+		$.getJSON('https://student.sbhs.net.au/api/timetable/bells.json?date='+ isodate +'&callback=?', function( data ) {
 			if (data && data.status != 'Error') {
 				window.day = data
 				day.bells[0].bell = 'School Starts'
