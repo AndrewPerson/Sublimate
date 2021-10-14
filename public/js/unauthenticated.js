@@ -30,7 +30,7 @@
 					constructed += '</tr>'
 				}
 
-				$('#belltimes table').append(constructed)
+				$('#belltimes table').html(constructed);
 
 				showNextPeriod()
 			} else {
