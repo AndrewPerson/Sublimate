@@ -62,6 +62,8 @@
 				constructed += '</tr>'
 			}
 
+            console.log(constructed);
+
 			document.querySelector('#belltimes table').innerHTML = constructed;
 			showNextPeriod();
 		});
