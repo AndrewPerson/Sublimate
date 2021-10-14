@@ -83,3 +83,8 @@ function fadeOut(element) {
     if (element.hasClass("fade-in")) element.removeClass("fade-in");
     element.addClass("fade-out");
 }
+
+function toggleClass(element, c) {
+    if (element.hasClass(c)) element.removeClass(c);
+    else element.addClass(c);
+}

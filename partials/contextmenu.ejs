@@ -14,7 +14,7 @@
                 <option value='12'>Year 12</option>
             </select>
         </li>
-        <li onclick='localStorage.classicMode="1"==localStorage.classicMode?"0":"1";$("html").toggleClass("classic");customise.displayImage();'>Toggle Theme</li>
+        <li onclick='localStorage.classicMode="1"==localStorage.classicMode?"0":"1";toggleClass($("html"), "classic");customise.displayImage();'>Toggle Theme</li>
         <li style='border-top:solid 1px #ddd'></li>
         <li onclick='localStorage.clear();location.reload()'>Clear All Data</li>
     </ul>
