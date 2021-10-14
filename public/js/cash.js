@@ -3,6 +3,10 @@
 //Extra stuff to achieve feature parity.
 $.getJSON = (url, callback) => {
     fetch(url).then(async response => {
-        callback(JSON.parse(await response.text())); 
+        var text = await response.text();
+
+        console.log(text);
+
+        callback(JSON.parse(text)); 
     });
 }
