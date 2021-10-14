@@ -5,8 +5,6 @@ $.getJSON = (url, callback) => {
     fetch(url).then(async response => {
         var text = await response.text();
 
-        console.log(text);
-
         callback(JSON.parse(text)); 
     });
 }

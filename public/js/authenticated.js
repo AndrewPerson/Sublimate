@@ -62,13 +62,10 @@
 				constructed += '</tr>'
 			}
 
-			$('#belltimes table').innerHTML = constructed;
-			showNextPeriod()
-
+			document.querySelector('#belltimes table').innerHTML = constructed;
+			showNextPeriod();
 		});
 }
-
-
 
 function showNextPeriod() {
 	var now  = new Date()
