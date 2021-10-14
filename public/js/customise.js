@@ -1,5 +1,5 @@
 window.customise = {
-    imageSheet: $("body").append(document.createElement("style")),
+    imageSheet: document.createElement("style"),
     displayImage: function () {
         var overlayColor, defaultColor;
 
@@ -36,6 +36,8 @@ window.customise = {
         })
     }
 }
+
+document.appendChild(customise.imageSheet);
 
 if (localStorage.noticeFilter) $("#noticesFilterSelect").val(localStorage.noticeFilter)
 if (localStorage.classicMode == '1') $("html").addClass('classic')
