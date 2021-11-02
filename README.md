@@ -46,7 +46,7 @@ For a production scenario, instead of using config.js, set the following environ
 
 Well, the epic thingumabobs used  are:
 
-- JQuery, the cheap way to code your client. (TM)
+- Cash (a smaller alternative to jQuery, the cheap way to code your client. (TM))
 - Countdown.js, which doesn't seem to have a good CDN behind it. = (
 - Node.js, which I don't think I have to *actually* credit, but meh.
 - Express, the cheap way to code your server. (TM)
