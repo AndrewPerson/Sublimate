@@ -14,7 +14,10 @@ window.customise = {
     },
     requestImage: function () {
         var that = this
-        var input = $("<input type='file' accept='image/*'>").click()
+        var input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/*";
+        input.click();
         input.on('change', function (e) {
             if (input[0].files && input[0].files[0]) {
                 var FR = new FileReader()
